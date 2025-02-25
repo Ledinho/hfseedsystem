@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar FNFE</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <h2>Editar Dados do FNFE</h2>
+
+        <form method="POST">
+            <!-- Exibe os dados atuais para edição -->
+            <div class="form-group">
+                <label for="data">Data:</label>
+                <input type="text" class="form-control" id="data" name="data" value="{{ registro['data'] }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="destino">Destino:</label>
+                <input type="text" class="form-control" id="destino" name="destino" value="{{ registro['destino'] }}"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="consultor">Consultor:</label>
+                <input type="text" class="form-control" id="consultor" name="consultor"
+                    value="{{ registro['consultor'] }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="transportador">Transportador:</label>
+                <input type="text" class="form-control" id="transportador" name="transportador"
+                    value="{{ registro['transportador'] }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="notas">Notas Fiscais:</label>
+                <input type="text" class="form-control" id="notas" name="nota" value="{{ ','.join(notas_fiscais) }}"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <label for="obs">Observações:</label>
+                <textarea class="form-control" id="obs" name="obs">{{ registro['obs'] }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar alterações</button>
+        </form>
+
+        <a href="{{ url_for('dashboard') }}" class="btn btn-secondary mt-3">Voltar ao Dashboard</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
