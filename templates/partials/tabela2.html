@@ -1,0 +1,30 @@
+<tbody>
+  {% for devolutiva in devolutiva %}
+  <tr>
+    <td class="align-middle text-center">
+      <span class="text-secondary text-xs font-weight-bold">{{ devolutiva[0] }}</span>
+    </td>
+    <td class="align-middle text-center text-capitalize">
+      <span class="text-secondary text-xs font-weight-bold">{{ devolutiva[2] }}</span>
+    </td>
+    <td class="align-middle text-center text-uppercase">
+      <span class="text-secondary text-xs font-weight-bold">{{ devolutiva[4] }}</span>
+    </td>
+    <td class="align-middle text-center text-sm" style="padding-top: 20px; padding-bottom: 20px">
+      <span class="badge badge-sm bg-gradient-blue">{{ devolutiva[3] }}</span>
+    </td>
+    <td class="align-middle text-center">
+      <span class="text-secondary text-xs font-weight-bold">
+        {% if devolutiva[1] %}
+        {% set partes = devolutiva[1].split('T')[0].split('-') %}
+        {{ partes[2] }}/{{ partes[1] }}/{{ partes[0] }}
+        {% else %}
+        -
+        {% endif %}
+      </span>
+    </td>
+    <td class="align-middle">
+    </td>                      
+  </tr>
+  {% endfor %}
+</tbody>

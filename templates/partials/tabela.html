@@ -1,0 +1,35 @@
+<tbody>
+  {% for registro in registros %}
+  <tr>
+    <td class="align-middle text-center">
+      <span class="text-secondary text-xs font-weight-bold">{{ registro[0] }}</span>
+    </td>
+    <td class="align-middle text-center text-capitalize">
+      <span class="text-secondary text-xs font-weight-bold">{{ registro[4] }}</span>
+    </td>
+    <td class="align-middle text-center text-uppercase">
+      <span class="text-secondary text-xs font-weight-bold">{{ registro[3] }}</span>
+    </td>
+    <td class="align-middle text-center text-capitalize">
+      <span class="text-secondary text-xs font-weight-bold">{{ registro[2] }}</span>
+    </td>
+    <td class="align-middle text-center text-sm" style="padding-top: 20px; padding-bottom: 20px">
+      <span class="badge badge-sm bg-gradient-blue">{{ registro[5] }}</span>
+    </td>
+    <td class="align-middle text-center">
+      <span class="text-secondary text-xs font-weight-bold"> {% if registro[1] %}
+        {% set partes = registro[1].split('T')[0].split('-') %}
+        {{ partes[2] }}/{{ partes[1] }}/{{ partes[0] }}
+        {% else %}
+        -
+        {% endif %}</span>
+    </td>
+    <td class="align-middle">
+      <a href="{{ url_for('ver_detalhes', id=registro[0]) }}" target="_blank"
+        class="text-secondary font-weight-bold text-xs" data-toggle="tooltip">
+        Ver
+      </a>
+    </td>
+  </tr>
+  {% endfor %}
+</tbody

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório de Notas Entregues</title>
+  <link rel="stylesheet" href="../static/css/soft-ui-dashboard.css">
+</head>
+<body>
+  <div class="container mt-4">
+    <h3>Relatório - NFe Entregues</h3>
+    
+    <!-- Filtros de Pesquisa -->
+    <form method="GET" action="/relatorio_entregues">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="data_inicio">Data Início</label>
+          <input type="date" id="data_inicio" name="data_inicio" class="form-control" value="{{ data_inicio }}">
+        </div>
+        <div class="col-md-3">
+          <label for="data_fim">Data Fim</label>
+          <input type="date" id="data_fim" name="data_fim" class="form-control" value="{{ data_fim }}">
+        </div>
+        <div class="col-md-3">
+          <label for="consultor">Consultor</label>
+          <input type="text" id="consultor" name="consultor" class="form-control" value="{{ consultor }}">
+        </div>
+        <div class="col-md-3">
+          <label>&nbsp;</label><br>
+          <button type="submit" class="btn btn-primary">Filtrar</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Tabela de Resultados -->
+    <table class="table table-bordered mt-3">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Data</th>
+          <th>Consultor</th>
+          <th>Nota</th>
+          <th>Transportador</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in entregues %}
+        <tr>
+          <td>{{ row[0] }}</td>
+          <td>{{ row[1] | datetimeformat('%d/%m/%Y') }}</td>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+          <td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <!-- Botões -->
+    <a href="/dashboard" class="btn btn-secondary mt-3">Voltar ao Dashboard</a>
+    <a href="/exportar_excel_entregues?data_inicio={{ data_inicio }}&data_fim={{ data_fim }}&consultor={{ consultor }}" class="btn btn-success mt-3">Exportar para Excel</a>
+  </div>
+</body>
+</html>
